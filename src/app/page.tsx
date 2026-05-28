@@ -1,65 +1,78 @@
-import Image from "next/image";
+import Link from "next/link";
+import { auth } from "@/lib/auth";
 
-export default function Home() {
+export default async function HomePage() {
+  const session = await auth();
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="min-h-screen flex flex-col">
+      <header className="border-b bg-white">
+        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+          <Link href="/" className="text-xl font-bold tracking-tight">
+            Maestro
+          </Link>
+          <nav className="flex items-center gap-4">
+            {session ? (
+              <>
+                <Link href="/dashboard" className="text-sm font-medium hover:text-indigo-600 transition-colors">
+                  Dashboard
+                </Link>
+                <span className="text-sm text-gray-500">{session.user?.name}</span>
+              </>
+            ) : (
+              <Link
+                href="/signin"
+                className="text-sm font-medium bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors"
+              >
+                Sign In
+              </Link>
+            )}
+          </nav>
+        </div>
+      </header>
+
+      <main className="flex-1">
+        <section className="max-w-4xl mx-auto px-4 py-24 text-center">
+          <h1 className="text-5xl font-bold tracking-tight mb-6">
+            Your Studio,<br /><span className="text-indigo-600">Beautifully Organized</span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="text-lg text-gray-600 mb-10 max-w-2xl mx-auto">
+            Schedule lessons, track payments, and manage students - all in one place.
+            Built for private music teachers who want less admin and more teaching.
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+          <div className="flex gap-4 justify-center">
+            <Link
+              href="/signin"
+              className="bg-indigo-600 text-white px-8 py-3 rounded-lg text-lg font-medium hover:bg-indigo-700 transition-colors"
+            >
+              Get Started Free
+            </Link>
+            <Link
+              href="/pricing"
+              className="border border-gray-300 text-gray-700 px-8 py-3 rounded-lg text-lg font-medium hover:bg-gray-50 transition-colors"
+            >
+              View Pricing
+            </Link>
+          </div>
+        </section>
+
+        <section className="max-w-6xl mx-auto px-4 pb-24 grid md:grid-cols-3 gap-8">
+          {[
+            { title: "Smart Scheduling", desc: "Calendar with recurring lessons, conflicts detection, and student reminders." },
+            { title: "Easy Billing", desc: "Auto-generate invoices from lessons. Accept card payments via Stripe." },
+            { title: "Student Portal", desc: "Students see their schedule, pay invoices, and track progress." },
+          ].map((f) => (
+            <div key={f.title} className="bg-white rounded-xl p-6 shadow-sm border">
+              <h3 className="font-semibold text-lg mb-2">{f.title}</h3>
+              <p className="text-gray-600 text-sm">{f.desc}</p>
+            </div>
+          ))}
+        </section>
       </main>
+
+      <footer className="border-t bg-white py-8 text-center text-sm text-gray-500">
+        Maestro &copy; {new Date().getFullYear()}. Built for music teachers.
+      </footer>
     </div>
   );
 }
