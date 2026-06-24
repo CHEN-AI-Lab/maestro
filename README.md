@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SaaSPro — Generic SaaS Starter
 
-## Getting Started
+A production-ready SaaS starter template built with modern best practices: multi-tenant Organizations, Clients, Events, and Invoicing.
 
-First, run the development server:
+## Tech Stack
+
+Next.js 16 (App Router) + TypeScript + Tailwind CSS 4 + Prisma 5 + NextAuth v5 + Stripe
+
+## Quick Start
 
 ```bash
+pnpm install
+cd apps/web
+cp .env.example .env.local   # Fill in secrets
+npx prisma generate
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+apps/web/       — Next.js web app
+shared/         — Cross-platform types, constants, utils, API client, translations
+prisma/         — Database schema
+docs/           — Architecture, progress, decisions
+scripts/        — Setup, check, deploy
+uniapp/         — Uni-app mobile (future)
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Commands
 
-## Learn More
+| Command | Description |
+|---------|-------------|
+| `pnpm dev` | Start all apps (via turbo) |
+| `pnpm dev:web` | Start web app only |
+| `pnpm build` | Build all apps |
+| `pnpm lint` | Lint all apps |
+| `pnpm test` | Run all tests |
+| `pnpm db:generate` | Generate Prisma client |
+| `pnpm db:push` | Push schema to database |
+| `pnpm db:studio` | Open Prisma Studio |
 
-To learn more about Next.js, take a look at the following resources:
+## Environment Variables
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+See `.env.example` for all required variables:
+- Database: DATABASE_URL (Neon PostgreSQL)
+- Auth: AUTH_SECRET, AUTH_GITHUB_ID/SECRET, AUTH_GOOGLE_ID/SECRET, AUTH_RESEND_KEY
+- Stripe: STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET, NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY

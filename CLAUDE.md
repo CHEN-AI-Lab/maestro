@@ -1,7 +1,7 @@
-# Maestro — Music Teacher Studio Manager
+# SaaSPro — Generic SaaS Starter
 
 ## Overview
-Maestro is a SaaS platform for private music teachers to manage their studio: scheduling, student management, invoicing, and payments.
+SaaSPro is a production-ready SaaS starter template. It provides multi-tenant organization management, client management, event scheduling, invoicing, and subscription-based payments.
 
 ## Tech Stack
 - **Framework**: Next.js 15 (App Router) + TypeScript (strict)
@@ -27,11 +27,11 @@ src/
 │   ├── api/              # REST API routes
 │   │   ├── auth/         # NextAuth handlers
 │   │   ├── webhooks/     # Stripe webhooks
-│   │   ├── students/     # Student CRUD
-│   │   ├── lessons/      # Lesson CRUD
+│   │   ├── clients/      # Client CRUD
+│   │   ├── events/       # Event CRUD
 │   │   └── invoices/     # Invoice CRUD
 │   ├── dashboard/        # Protected dashboard pages
-│   │   ├── students/
+│   │   ├── clients/
 │   │   ├── calendar/
 │   │   └── invoices/
 │   ├── signin/           # Auth page
@@ -44,7 +44,7 @@ src/
 └── components/           # Shared components
 prisma/
 ├── schema.prisma         # Database schema
-├── config.ts             # Prisma config (replaced by schema v5)
+├── config.ts             # Prisma config
 docs/                     # Documentation
 scripts/                  # Automation scripts
 tests/                    # Test files
@@ -52,10 +52,10 @@ tests/                    # Test files
 
 ## Database Models
 - **User**: Auth user with subscription tier (FREE/PRO/STUDIO)
-- **Teacher**: Teacher profile (linked to User), hourly rate, studio name
-- **Student**: Student profile (belongs to Teacher), instrument, level
-- **Lesson**: Scheduled lesson (Teacher-Student), price, status
-- **Invoice**: Payment invoice (Teacher-Student), amount, Stripe integration
+- **Organization**: Tenant organization (linked to User), custom branding
+- **Client**: Client profile (belongs to Organization), contact info
+- **Event**: Scheduled event (Organization-Client), status, price
+- **Invoice**: Payment invoice (Organization-Client), amount, Stripe integration
 
 ## Environment Variables
 See `.env.example` for all required variables:
@@ -78,8 +78,8 @@ npx prisma studio  # Database UI
 ```
 
 ## Pricing Tiers
-| Tier | Price | Students | Features |
-|------|-------|----------|----------|
+| Tier | Price | Clients | Features |
+|------|-------|---------|----------|
 | Free | $0 | Up to 5 | Basic calendar, manual invoicing |
-| Pro | $19/mo | Unlimited | Recurring lessons, auto invoices, Stripe, student portal |
-| Studio | $49/mo | Unlimited | Multi-teacher, analytics, custom branding, API |
+| Pro | $19/mo | Unlimited | Recurring events, auto invoices, Stripe, client portal |
+| Studio | $49/mo | Unlimited | Multi-organization, analytics, custom branding, API |

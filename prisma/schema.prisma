@@ -8,12 +8,12 @@ datasource db {
 }
 
 enum UserRole {
-  TEACHER
-  STUDENT
-  PARENT
+  ADMIN
+  MEMBER
+  CLIENT
 }
 
-enum LessonStatus {
+enum EventStatus {
   SCHEDULED
   COMPLETED
   CANCELLED
@@ -30,7 +30,7 @@ enum PaymentStatus {
 enum SubscriptionTier {
   FREE
   PRO
-  STUDIO
+  ENTERPRISE
 }
 
 model User {
@@ -39,14 +39,14 @@ model User {
   email         String           @unique
   emailVerified DateTime?
   image         String?
-  role          UserRole         @default(TEACHER)
+  role          UserRole         @default(MEMBER)
   createdAt     DateTime         @default(now())
   updatedAt     DateTime         @updatedAt
 
   accounts      Account[]
   sessions      Session[]
-  teacher       Teacher?
-  student       Student?
+  organization Organization?
+  client       Client?
 
   stripeCustomerId   String?
   subscriptionTier   SubscriptionTier @default(FREE)
@@ -90,65 +90,65 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
-model Teacher {
-  id         String   @id @default(cuid())
-  userId     String   @unique
-  studioName String?
-  hourlyRate Float    @default(50.00)
-  currency   String   @default("USD")
-  bio        String?
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+model Organization {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  name      String?
+  rate      Float    @default(50.00)
+  currency  String   @default("USD")
+  bio       String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  students Student[]
-  lessons  Lesson[]
+  user    User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  clients Client[]
+  events  Event[]
   invoices Invoice[]
 }
 
-model Student {
+model Client {
   id         String   @id @default(cuid())
   userId     String?  @unique
-  teacherId  String
+  orgId      String
   name       String
   email      String?
   phone      String?
-  instrument String?
+  category   String?
   level      String?
   notes      String?
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
 
-  teacher  Teacher   @relation(fields: [teacherId], references: [id], onDelete: Cascade)
-  user     User?     @relation(fields: [userId], references: [id])
-  lessons  Lesson[]
-  invoices Invoice[]
+  organization Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  user         User?        @relation(fields: [userId], references: [id])
+  events       Event[]
+  invoices     Invoice[]
 }
 
-model Lesson {
+model Event {
   id        String       @id @default(cuid())
-  teacherId String
-  studentId String
+  orgId     String
+  clientId  String
   title     String
   startTime DateTime
   endTime   DateTime
   duration  Int
-  status    LessonStatus @default(SCHEDULED)
+  status    EventStatus  @default(SCHEDULED)
   notes     String?
   price     Float
   invoiceId String?
   createdAt DateTime     @default(now())
   updatedAt DateTime     @updatedAt
 
-  teacher Teacher  @relation(fields: [teacherId], references: [id], onDelete: Cascade)
-  student Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
-  invoice Invoice? @relation(fields: [invoiceId], references: [id])
+  organization Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  client       Client       @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  invoice      Invoice?     @relation(fields: [invoiceId], references: [id])
 }
 
 model Invoice {
   id              String        @id @default(cuid())
-  teacherId       String
-  studentId       String
+  orgId           String
+  clientId        String
   amount          Float
   status          PaymentStatus @default(PENDING)
   dueDate         DateTime
@@ -157,7 +157,7 @@ model Invoice {
   createdAt       DateTime      @default(now())
   updatedAt       DateTime      @updatedAt
 
-  teacher Teacher  @relation(fields: [teacherId], references: [id], onDelete: Cascade)
-  student Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
-  lessons Lesson[]
+  organization Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  client       Client       @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  events       Event[]
 }

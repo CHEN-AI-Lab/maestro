@@ -1,0 +1,114 @@
+{
+  "pages": [
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "SaaSPro",
+        "navigationBarBackgroundColor": "#4F46E5",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/login/login",
+      "style": {
+        "navigationBarTitleText": "登录",
+        "navigationBarBackgroundColor": "#4F46E5",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/dashboard/dashboard",
+      "style": {
+        "navigationBarTitleText": "仪表盘",
+        "navigationBarBackgroundColor": "#4F46E5",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/clients/clients",
+      "style": {
+        "navigationBarTitleText": "客户管理",
+        "navigationBarBackgroundColor": "#4F46E5",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/clients/client-detail",
+      "style": {
+        "navigationBarTitleText": "客户详情",
+        "navigationBarBackgroundColor": "#4F46E5",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/calendar/calendar",
+      "style": {
+        "navigationBarTitleText": "日程日历",
+        "navigationBarBackgroundColor": "#4F46E5",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/invoices/invoices",
+      "style": {
+        "navigationBarTitleText": "发票管理",
+        "navigationBarBackgroundColor": "#4F46E5",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/pricing/pricing",
+      "style": {
+        "navigationBarTitleText": "定价方案",
+        "navigationBarBackgroundColor": "#4F46E5",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/profile/profile",
+      "style": {
+        "navigationBarTitleText": "个人中心",
+        "navigationBarBackgroundColor": "#1F2937",
+        "navigationBarTextStyle": "white"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "SaaSPro",
+    "navigationBarBackgroundColor": "#4F46E5",
+    "backgroundColor": "#F0F2F5"
+  },
+  "tabBar": {
+    "color": "#94A3B8",
+    "selectedColor": "#4F46E5",
+    "borderStyle": "black",
+    "backgroundColor": "#FFFFFF",
+    "list": [
+      {
+        "pagePath": "pages/dashboard/dashboard",
+        "text": "仪表盘"
+      },
+      {
+        "pagePath": "pages/clients/clients",
+        "text": "客户"
+      },
+      {
+        "pagePath": "pages/calendar/calendar",
+        "text": "日历"
+      },
+      {
+        "pagePath": "pages/invoices/invoices",
+        "text": "发票"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的"
+      }
+    ]
+  },
+  "easycom": {
+    "autoscan": true,
+    "custom": {}
+  }
+}
