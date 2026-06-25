@@ -6,7 +6,7 @@
     "dev": "turbo run dev",
     "dev:web": "turbo run dev --filter=@saas-starter/web",
     "dev:web:alt": "cd apps/web && npx next dev",
-    "build": "turbo run build",
+    "build": "prisma generate && turbo run build",
     "lint": "turbo run lint",
     "test": "turbo run test",
     "format": "prettier --write .",
