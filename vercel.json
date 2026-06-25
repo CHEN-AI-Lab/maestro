@@ -1,3 +1,0 @@
-{
-  "buildCommand": "cd .. && npx prisma generate --schema=prisma/schema.prisma && cd apps/web && turbo run build"
-}
