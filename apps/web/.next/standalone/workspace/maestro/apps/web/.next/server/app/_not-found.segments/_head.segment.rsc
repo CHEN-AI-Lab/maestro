@@ -1,0 +1,6 @@
+1:"$Sreact.fragment"
+2:I[82322,["/_next/static/chunks/0jfj_ojs_c4mq.js","/_next/static/chunks/0hoh3-jtw65w7.js"],"ViewportBoundary"]
+3:I[82322,["/_next/static/chunks/0jfj_ojs_c4mq.js","/_next/static/chunks/0hoh3-jtw65w7.js"],"MetadataBoundary"]
+4:"$Sreact.suspense"
+5:I[35480,["/_next/static/chunks/0jfj_ojs_c4mq.js","/_next/static/chunks/0hoh3-jtw65w7.js"],"IconMark"]
+0:{"rsc":["$","$1","h",{"children":[["$","meta",null,{"name":"robots","content":"noindex"}],["$","$L2",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L3",null,{"children":["$","$4",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"SaaSPro — All-in-One Business Platform"}],["$","meta","1",{"name":"description","content":"Manage clients, automate workflows, track analytics, and grow your business — all in one place."}],["$","link","2",{"rel":"icon","href":"/favicon.ico?favicon.0x3dzn~oxb6tn.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L5","3",{}]]}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"gzE1trCNYW662fUlYFXs6"}
