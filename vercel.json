@@ -1,4 +1,4 @@
 {
   "installCommand": "cd .. && pnpm install",
-  "buildCommand": "cd .. && pnpm run build"
+  "buildCommand": "cd .. && npx prisma generate --schema=prisma/schema.prisma && turbo run build"
 }
