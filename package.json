@@ -9,6 +9,8 @@
     "build": "prisma generate && turbo run build",
     "lint": "turbo run lint",
     "test": "turbo run test",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
     "format": "prettier --write .",
     "db:generate": "cd apps/web && npx prisma generate",
     "db:push": "cd apps/web && npx prisma db push",
