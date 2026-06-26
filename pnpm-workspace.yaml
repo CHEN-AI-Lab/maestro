@@ -3,7 +3,7 @@ packages:
   - 'shared'
   - 'shared/*'
 
-onlyBuiltDependencies:
+allowBuilds:
   - '@parcel/watcher'
   - '@prisma/client'
   - '@prisma/engines'
