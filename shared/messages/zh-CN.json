@@ -1,0 +1,20 @@
+{
+  "site": {
+    "title": "SaaSPro — All-in-One Business Platform",
+    "description": "Manage clients, automate workflows, track analytics, and grow your business."
+  },
+  "nav": {
+    "home": "首页",
+    "pricing": "定价",
+    "dashboard": "仪表盘",
+    "signIn": "登录",
+    "signUp": "注册"
+  },
+  "auth": {
+    "email": "邮箱",
+    "password": "密码",
+    "signInTitle": "登录",
+    "signUpTitle": "创建账户",
+    "signOut": "退出登录"
+  }
+}
