@@ -1,20 +1,61 @@
 {
-  "site": {
-    "title": "SaaSPro — All-in-One Business Platform",
-    "description": "Manage clients, automate workflows, track analytics, and grow your business."
+  "meta": { "title": "SaaSPro — All-in-One Business Platform", "description": "Manage clients, automate workflows, track analytics, and grow your business." },
+  "nav": { "brand": "SaaSPro", "pricing": "Pricing", "signIn": "Sign In", "dashboard": "Dashboard" },
+  "hero": {
+    "badge": "Built for modern teams",
+    "title1": "Run Your Business,",
+    "title2": "Effortlessly",
+    "desc": "Manage clients, automate workflows, track analytics, and grow — all in one place. Replace the messy combo of spreadsheets, emails, and disconnected tools.",
+    "cta": "Get Started Free",
+    "pricing": "View Pricing",
+    "footnote": "No credit card required. Free for up to 10 clients."
   },
-  "nav": {
-    "home": "Home",
-    "pricing": "Pricing",
-    "dashboard": "Dashboard",
-    "signIn": "Sign In",
-    "signUp": "Sign Up"
+  "features": {
+    "heading": "Everything you need to scale your business",
+    "subtitle": "Purpose-built for growing teams. Not bloated enterprise software with features you'll never touch.",
+    "items": [
+      { "title": "Smart Analytics", "desc": "Real-time dashboards with actionable insights. Track revenue, client growth, engagement, and key metrics at a glance." },
+      { "title": "Team Collaboration", "desc": "Workspaces with role-based access, shared calendars, task assignments, and built-in messaging. Keep everyone on the same page." },
+      { "title": "Integrations & Automations", "desc": "Connect with Stripe, Slack, Google Workspace, and more. Automate repetitive tasks like invoicing, reminders, and data sync." }
+    ]
   },
-  "auth": {
-    "email": "Email",
-    "password": "Password",
-    "signInTitle": "Sign In",
-    "signUpTitle": "Create Account",
-    "signOut": "Sign Out"
-  }
+  "comparison": {
+    "heading": "Stop juggling 5 different tools",
+    "col1": "SaaSPro", "col2": "Doing it manually", "col3": "Generic tools",
+    "rows": [
+      ["Client management", "✓", "Manual", "Partial"],
+      ["Automated invoicing", "✓", "✗", "✗"],
+      ["Analytics & reporting", "✓", "✗", "Partial"],
+      ["Team collaboration", "✓", "✗", "✓"],
+      ["Client portal", "✓", "✗", "✗"],
+      ["Payment tracking", "✓", "Manual", "Partial"],
+      ["Tax-ready reports", "✓", "✗", "✗"],
+      ["Built for modern teams", "✓", "✗", "✗"]
+    ]
+  },
+  "testimonials": { "heading": "Trusted by growing businesses" },
+  "faq": { "heading": "Frequently asked questions" },
+  "cta": { "heading": "Ready to streamline your business?", "btn": "Get Started Free" },
+  "footer": { "tagline": "The all-in-one platform for modern businesses", "pricing": "Pricing", "signIn": "Sign In", "contact": "Contact Us" },
+  "pricing": {
+    "title": "Choose the right plan", "subtitle": "Start free, upgrade as you grow",
+    "monthly": "Monthly", "yearly": "Yearly", "saveMonths": "Save 2 months",
+    "free": "Free", "pro": "Pro", "enterprise": "Enterprise",
+    "mostPopular": "Most Popular", "perMonth": "/mo",
+    "currentPlan": "Current Plan", "freeStart": "Get Started Free",
+    "subscribePro": "Subscribe to Pro", "contactSales": "Contact Sales",
+    "processing": "Processing...", "checkoutFailed": "Checkout failed, please try again",
+    "networkError": "Network error, please check your connection",
+    "features": {
+      "free": ["Up to 10 clients", "Client management", "Basic invoicing", "Community support"],
+      "pro": ["Unlimited clients", "Advanced analytics", "Auto invoice generation", "Team collaboration", "Email notifications", "Priority support"],
+      "enterprise": ["Unlimited team members", "All Pro features", "Custom branding", "API access", "Dedicated account manager", "SLA guarantee"]
+    }
+  },
+  "signin": { "title": "Sign In", "email": "Email", "submit": "Send sign-in link" },
+  "signup": { "title": "Create Account", "submit": "Send verification link" },
+  "dashboard": { "title": "Dashboard", "clients": "Clients", "events": "Events", "invoices": "Invoices" },
+  "error": { "title": "Something went wrong", "desc": "An unexpected error occurred. Please try again.", "retry": "Retry" },
+  "notFound": { "title": "Page Not Found", "desc": "The page you are looking for does not exist or has been moved.", "btn": "Go Home" },
+  "publish": { "title": "Publish", "titlePlaceholder": "Enter title", "pricePlaceholder": "Enter price", "descPlaceholder": "Describe your item", "publishBtn": "Publish" }
 }
